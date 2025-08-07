@@ -18,13 +18,19 @@ in
       defaultEditor = (config.custom.editors.defaultEditor == "helix");
 
       languages = {
-        language-server.nixd = {
-          command = "${pkgs.nixd}/bin/nixd";
-        };
+        language-server = {
+          nixd = {
+            command = "${pkgs.nixd}/bin/nixd";
+          };
 
-        language-server.qml = {
-          command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
-          args = [ "-E" ];
+          rust = {
+            command = "${pkgs.rust-rust-analyzer}/bin/rust-analyzer"
+          };
+
+          qml = {
+            command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+            args = [ "-E" ];
+          };
         };
       };
     };
@@ -32,6 +38,7 @@ in
     home.packages = with pkgs; [
       nixd
       kdePackages.qtdeclarative
+      rust-rust-analyzer
     ];
   };
 }
