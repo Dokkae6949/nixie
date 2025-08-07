@@ -12,25 +12,27 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.fish = {
-      enable = true;
+    programs = {
+      fish = {
+        enable = true;
 
-      # Disable annoying welcome message.
-      shellInit = ''
-        set fish_greeting
-      '';
+        # Disable annoying welcome message.
+        shellInit = ''
+          set fish_greeting
+        '';
 
-      shellAliases = lib.mkDefault {
-        e = "$EDITOR";
+        shellAliases = lib.mkDefault {
+          e = "$EDITOR";
 
-        ".." = "cd ..";
-        "..." = "cd ../..";
-        "...." = "cd ../../..";
-        "....." = "cd ../../../..";
-        "......" = "cd ../../../../..";
+          ".." = "cd ..";
+          "..." = "cd ../..";
+          "...." = "cd ../../..";
+          "....." = "cd ../../../..";
+          "......" = "cd ../../../../..";
 
-        l = "ls -la";
-        ll = "ls -l";
+          l = "ls -la";
+          ll = "ls -l";
+        };
       };
 
       starship = {
