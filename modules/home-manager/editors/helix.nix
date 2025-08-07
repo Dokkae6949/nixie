@@ -1,7 +1,7 @@
 { lib
 , config
 , pkgs
-, self
+, inputs
 , ...
 }:
 
@@ -23,8 +23,9 @@ in
           nixd = {
             args = [ "--semantic-tokens=true" ];
             config.nixd = let
-              flake = "(builtins.getFlake (toString ${self.outPath}))";
-              nixosOptions = "${flake}.nixosConfigurations.${config.networking.hostName}.options";
+              host = "evergarden";
+              flake = "(builtins.getFlake (toString ${inputs.self.outPath}))";
+              nixosOptions = "${flake}.nixosConfigurations.${host}.options";
               homeManagerOptions = "${nixosOptions}.home-manager.users.type.getSubOptions []";
             in {
               nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
