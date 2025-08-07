@@ -13,7 +13,9 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.alacritty = {
-      enable = true;      
+      enable = true;
+      
+      theme = "catppuccin_mocha";
     };
   };
 }

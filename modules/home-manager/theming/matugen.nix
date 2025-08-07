@@ -22,8 +22,16 @@ in
       matugen
     ];
 
-    programs.helix = {
-      settings.theme = lib.mkForce "matugen";
+    programs = {
+      helix = {
+        settings.theme = lib.mkDefault "matugen";
+      };
+
+      alacritty = {
+        settings.general.import = lib.mkDefault [
+          "colors.toml"
+        ];
+      };
     };
   };
 }
