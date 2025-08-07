@@ -1,0 +1,8 @@
+{ ...
+}:
+
+{
+  imports = [
+    ./matugen.nix
+  ];
+}

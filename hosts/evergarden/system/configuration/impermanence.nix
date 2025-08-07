@@ -1,0 +1,27 @@
+{ inputs
+, ...
+}:
+
+{
+  imports = [
+    inputs.impermanence.nixosModules.impermanence
+  ];
+
+  environment.persistence."/persist" = {
+    enable = true;
+    hideMounts = true;
+
+    directories = [
+      "/root/.config/sops"
+      "/root/.ssh"
+    
+      "/etc/nixos"
+      "/etc/NetworkManager/system-connections"
+
+      "/run/media"
+    ];
+    files = [
+      "/etc/machine-id"
+    ];
+  };
+}

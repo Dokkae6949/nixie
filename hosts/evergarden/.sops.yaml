@@ -1,0 +1,9 @@
+keys:
+  - &user_root age1hfsr0yvs6nwr2ecffcrp2pdvztx8lgfnmd7t8whr53u3lczzcfaq0rrs6z
+  - &user_kurisu age154ausyv0u0lscdxlurm29wnktw0w694z6q87xnd5l5laj2xrp98qrkxc74
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *user_root
+      - *user_kurisu
