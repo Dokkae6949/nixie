@@ -1,6 +1,7 @@
 { lib
 , config
 , pkgs
+, self
 , ...
 }:
 
@@ -20,25 +21,48 @@ in
       languages = {
         language-server = {
           nixd = {
-            command = "${pkgs.nixd}/bin/nixd";
-          };
-
-          rust = {
-            command = "${pkgs.rust-rust-analyzer}/bin/rust-analyzer"
+            args = [ "--semantic-tokens=true" ];
+            config.nixd = let
+              flake = "(builtins.getFlake (toString ${self.outPath}))";
+              nixosOptions = "${flake}.nixosConfigurations.${config.networking.hostName}.options";
+              homeManagerOptions = "${nixosOptions}.home-manager.users.type.getSubOptions []";
+            in {
+              nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+              options = {
+                nixos.expr = nixosOptions;
+                home-manager.expr = homeManagerOptions;
+              };
+            };
           };
 
           qml = {
-            command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
             args = [ "-E" ];
           };
         };
       };
-    };
 
-    home.packages = with pkgs; [
-      nixd
-      kdePackages.qtdeclarative
-      rust-rust-analyzer
-    ];
+      extraPackages = with pkgs; [
+        nixd
+        
+        kdePackages.qtdeclarative
+
+        just-lsp
+        yaml-language-server
+        unstable.tombi
+
+        rust-rust-analyzer
+        clang-tools
+        ruff
+
+        intelephense
+        vscode-langservers-extracted
+        typescript-language-server
+
+        kotlin-language-server
+        jdt-language-server
+
+        marksman
+      ];
+    };
   };
 }
