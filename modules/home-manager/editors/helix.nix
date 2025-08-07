@@ -21,6 +21,7 @@ in
       languages = {
         language-server = {
           nixd = {
+            command = "nixd";
             args = [ "--semantic-tokens=true" ];
             config.nixd = let
               host = "evergarden";
@@ -36,7 +37,12 @@ in
             };
           };
 
+          rust = {
+            command = "rust-analyzer";
+          };
+
           qml = {
+            command = "qmlls";
             args = [ "-E" ];
           };
         };
