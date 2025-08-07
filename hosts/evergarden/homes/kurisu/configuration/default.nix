@@ -35,6 +35,7 @@ in
     };
 
     tools = {
+      eza.enable = true;
       git.enable = true;
       systemDiagnostic.enable = true;
     };
