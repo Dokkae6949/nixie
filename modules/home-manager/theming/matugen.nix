@@ -21,5 +21,9 @@ in
     home.packages = with pkgs; [
       matugen
     ];
+
+    programs.helix = {
+      settings.theme = lib.mkForce "matugen";
+    };
   };
 }
