@@ -50,7 +50,7 @@ in
         yaml-language-server
         unstable.tombi
 
-        rust-rust-analyzer
+        rust-analyzer
         clang-tools
         ruff
 
