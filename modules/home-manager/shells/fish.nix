@@ -22,7 +22,7 @@ in
           set fish_greeting
         '';
 
-        shellAliases = lib.mkDefault {
+        shellAliases = {
           e = "$EDITOR";
 
           ".." = "cd ..";
@@ -31,7 +31,7 @@ in
           "....." = "cd ../../../..";
           "......" = "cd ../../../../..";
 
-          tree = "${pkgs.eza}/bin/eza --tree";
+          tree = "${pkgs.eza}/bin/eza --color=always --tree";
           ls = "${pkgs.eza}/bin/eza --color=always --group-directories-first --icons'";
           ll = "${pkgs.eza}/bin/eza -la --icons --octal-permissions --group-directories-first'";
           l = "${pkgs.eza}/bin/eza -bGF --header --git --color=always --group-directories-first --icons'";
