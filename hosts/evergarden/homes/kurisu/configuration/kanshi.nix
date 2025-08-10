@@ -4,6 +4,7 @@
 {
   services.kanshi = {
     enable = true;
+    systemdTarget = "graphical.target";
 
     settings = [
       { profile = {
