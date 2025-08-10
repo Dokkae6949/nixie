@@ -35,7 +35,6 @@ in
     };
 
     tools = {
-      bat.enable = true;
       eza.enable = true;
       git.enable = true;
       systemDiagnostic.enable = true;

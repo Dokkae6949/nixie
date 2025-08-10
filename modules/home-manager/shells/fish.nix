@@ -36,8 +36,6 @@ in
           ll = "${pkgs.eza}/bin/eza -la --icons --octal-permissions --group-directories-first";
           l = "${pkgs.eza}/bin/eza --long --all --group --group-directories-first";
           lx = "${pkgs.eza}/bin/eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons";
-
-          cat = "${pkgs.bat}/bin/bat -Pp";
         };
       };
 
