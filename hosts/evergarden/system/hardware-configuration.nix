@@ -84,4 +84,21 @@
   };
 
   services.xserver.videoDrivers = lib.mkDefault ["amdgpu" "nvidia"];
+
+  # Symlink GPU to named paths
+  services.udev.extraRules = ''
+    # Symlink AMD iGPU to /dev/dri/amd-igpu
+    KERNEL=="card*", \
+      KERNELS=="0000:06:00.0", \
+      SUBSYSTEM=="drm", \
+      SUBSYSTEMS=="pci", \
+      SYMLINK+="dri/amd-igpu"
+
+    # Symlink NVIDIA dGPU to /dev/dri/nvidia-dgpu
+    KERNEL=="card*", \
+      KERNELS=="0000:01:00.0", \
+      SUBSYSTEM=="drm", \
+      SUBSYSTEMS=="pci", \
+      SYMLINK+="dri/nvidia-dgpu"
+  '';
 }

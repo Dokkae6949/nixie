@@ -1,16 +1,21 @@
-{ ...
+{ pkgs
+, ...
 }:
 
 {
-  services.shikane = {
-    enable = true;
+  # home.packages = with pkgs; [
+    # shikane
+  # ];
 
-    profile = [
+  services.shikane = {
+    # enable = true;
+
+    settings.profile = [
       { name = "internal-only";
         output = [
           { search = "=eDP-1";
             enable = true;
-            mode = "2560x1600@165";
+            mode = "2560x1600@165.02Hz";
             position = "0,0";
             scale = 1.0;
             adaptive_sync = true;
@@ -24,24 +29,27 @@
           }
 
           # Center monitor.
-          { search = "=DP-2";
-            mode = "2560x1440@165";
+          { search = ["m=DELL G2724D" "s=C9S16Y3" "v=Dell Inc."];
+            enable = true;
+            mode = "2560x1440@165.08Hz";
             position = "1920,0";
             scale = 1.0;
             adaptive_sync = true;
           }
 
           # Left monitor.
-          { search = "=DP-3";
-            mode = "1920x1080@60";
+          { search = ["m=HP P24h G4" "s=3CM2290QN8" "v=HP Inc."];
+            enable = true;
+            mode = "1920x1080@60Hz";
             position = "0,360";
             scale = 1.0;
             adaptive_sync = true;
           }
 
           # Right monitor.
-          { search = "=DP-4";
-            mode = "1920x1080@60";
+          { search = ["m=DELL P2419H" "s=5156Q33" "v=Dell Inc."];
+            enable = true;
+            mode = "1920x1080@60Hz";
             position = "4480,360";
             scale = 1.0;
             adaptive_sync = true;
@@ -52,12 +60,12 @@
   };
 
   services.kanshi = {
-    # enable = true;
+    enable = true;
     systemdTarget = "graphical-session.target";
 
     settings = [
       { profile = {
-          name = "laptop_standalone";
+          name = "internal-only";
           outputs = [
             { criteria = "eDP-1";
               mode = "2560x1600@165.02Hz";
@@ -69,7 +77,7 @@
         };
       }
       { profile = {
-          name = "laptop_docked_single";
+          name = "external-only-single";
           outputs = [
             # Laptop internal monitor.
             { criteria = "eDP-1";
@@ -87,7 +95,7 @@
         };
       }
       { profile = {
-          name = "docked_single";
+          name = "external-single";
           outputs = [
             # Center monitor.
             { criteria = "DP-2";
@@ -100,7 +108,7 @@
         };
       }
       { profile = {
-          name = "docked_multiple";
+          name = "external-all";
           outputs = [
             # Center monitor.
             { criteria = "DP-2";
@@ -127,7 +135,7 @@
         };
       }
       { profile = {
-          name = "laptop_docked_multiple";
+          name = "external-only-all";
           outputs = [
             # Laptop internal monitor.
             { criteria = "eDP-1";
