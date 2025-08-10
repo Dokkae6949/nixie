@@ -19,7 +19,7 @@ in
     ./browsers
     ./sops.nix
     ./qt.nix
-    ./kanshi.nix
+    ./monitors.nix
   ];
 
   custom = {

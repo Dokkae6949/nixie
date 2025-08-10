@@ -2,8 +2,57 @@
 }:
 
 {
-  services.kanshi = {
+  services.shikane = {
     enable = true;
+
+    profile = [
+      { name = "internal-only";
+        output = [
+          { search = "=eDP-1";
+            enable = true;
+            mode = "2560x1600@165";
+            position = "0,0";
+            scale = 1.0;
+            adaptive_sync = true;
+          }
+        ];
+      }
+      { name = "external-only-all";
+        output = [
+          { search = "=eDP-1";
+            enable = false;
+          }
+
+          # Center monitor.
+          { search = "=DP-2";
+            mode = "2560x1440@165";
+            position = "1920,0";
+            scale = 1.0;
+            adaptive_sync = true;
+          }
+
+          # Left monitor.
+          { search = "=DP-3";
+            mode = "1920x1080@60";
+            position = "0,360";
+            scale = 1.0;
+            adaptive_sync = true;
+          }
+
+          # Right monitor.
+          { search = "=DP-4";
+            mode = "1920x1080@60";
+            position = "4480,360";
+            scale = 1.0;
+            adaptive_sync = true;
+          }
+        ];
+      }
+    ];
+  };
+
+  services.kanshi = {
+    # enable = true;
     systemdTarget = "graphical-session.target";
 
     settings = [
