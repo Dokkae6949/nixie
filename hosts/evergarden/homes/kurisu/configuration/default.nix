@@ -9,6 +9,7 @@ in
   imports = [
     hmm.audio
     hmm.communication
+    hmm.desktops
     hmm.editors
     hmm.shells
     hmm.terminals
@@ -28,6 +29,10 @@ in
       direnv.enable = true;
     
       fish.enable = true;
+    };
+
+    desktops = {
+      environments.hyprland.hypridle.enable = true;
     };
 
     terminals = {
