@@ -1,4 +1,5 @@
 { outputs
+, pkgs
 , ...
 }:
 
@@ -21,6 +22,10 @@ in
     ./sops.nix
     ./qt.nix
     ./monitors.nix
+  ];
+
+  home.packages = with pkgs; [
+    zellij
   ];
 
   custom = {
