@@ -40,6 +40,12 @@
     extraModprobeConfig = ''
       options snd-intel-dspcfg dsp_driver=3
     '';
+
+    # Ensure NVIDIA provides fbdev/DRM console too
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+    ];
   };
 
   time.hardwareClockInLocalTime = lib.mkDefault true;
