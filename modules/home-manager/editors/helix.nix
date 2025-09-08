@@ -48,6 +48,13 @@ in
             args = [ "-E" ];
           };
         };
+
+        language = [
+          {
+            name = "css";
+            auto-format = false;
+          }
+        ];
       };
 
       extraPackages = with pkgs; [
