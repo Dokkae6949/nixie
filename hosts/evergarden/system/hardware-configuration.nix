@@ -43,14 +43,15 @@
     '';
 
     # Keep firmware/simpledrm from owning the console, and prefer NVIDIA’s fb
-    # kernelParams = [
+    kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     #   "nvidia-drm.modeset=1"
     #   "nvidia-drm.fbdev=1"
     #   "video=efifb:off"
     #   "video=simpledrm:off"
     #   # Pick the NVIDIA fbdev (often fb1). Adjust later if needed.
     #   "fbcon=map:1"
-    # ];
+    ];
   };
 
   time.hardwareClockInLocalTime = lib.mkDefault true;
