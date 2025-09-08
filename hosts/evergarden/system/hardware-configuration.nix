@@ -19,7 +19,7 @@
 
   boot = {
     initrd = {
-      kernelModules = [ "amdgpu" ];
+      kernelModules = [ "amdgpu" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
       availableKernelModules = [
         "nvme"
         "xhci_pci"
@@ -33,7 +33,8 @@
 
     kernelModules = [ "kvm-amd" "fuse" ];
     extraModulePackages = [ ];
-    blacklistedKernelModules = [ ];
+    # Don’t let nouveau grab the GPU
+    blacklistedKernelModules = [ "nouveau" ];
     supportedFilesystems = ["ntfs"];
 
     # Setup the intel audio Digital Signal Processor.
@@ -41,11 +42,15 @@
       options snd-intel-dspcfg dsp_driver=3
     '';
 
-    # Ensure NVIDIA provides fbdev/DRM console too
-    kernelParams = [
-      "nvidia-drm.modeset=1"
-      "nvidia-drm.fbdev=1"
-    ];
+    # Keep firmware/simpledrm from owning the console, and prefer NVIDIA’s fb
+    # kernelParams = [
+    #   "nvidia-drm.modeset=1"
+    #   "nvidia-drm.fbdev=1"
+    #   "video=efifb:off"
+    #   "video=simpledrm:off"
+    #   # Pick the NVIDIA fbdev (often fb1). Adjust later if needed.
+    #   "fbcon=map:1"
+    # ];
   };
 
   time.hardwareClockInLocalTime = lib.mkDefault true;
