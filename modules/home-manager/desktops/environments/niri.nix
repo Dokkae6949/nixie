@@ -1,4 +1,5 @@
-{ lib
+{ inputs
+, lib
 , config
 , pkgs
 , ...
@@ -15,6 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       brightnessctl
+      nwww
     ];
   };
 }

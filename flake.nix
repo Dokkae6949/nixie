@@ -30,10 +30,12 @@
       flake = false;
     };
 
-		# Desktop Environments
+		# Desktop Components
 		niri.url = "github:sodiboo/niri-flake";
-
-		# Widget Frameworks
+		nwww = {
+			url = "github:Dokkae6949/nwww";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		quickshell = {
 			url = "github:quickshell-mirror/quickshell";
 			inputs.nixpkgs.follows = "nixpkgs";

@@ -10,6 +10,7 @@
   modifications = final: prev: {
     quickshell = inputs.quickshell.packages.${final.system}.default;
     astal = inputs.astal.packages.${final.system}.default;
+    nwww = inputs.nwww.packages.${final.system}.default;
   };
   
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
