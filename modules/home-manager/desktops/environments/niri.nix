@@ -13,7 +13,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.programs = with pkgs; [
+    home.packages = with pkgs; [
       brightnessctl
     ];
   };
