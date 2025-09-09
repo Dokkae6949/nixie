@@ -41,6 +41,7 @@ in
       environments = {
         cosmic.enable = true;
         hyprland.enable = true;
+        niri.enable = true;
       };
     };
 

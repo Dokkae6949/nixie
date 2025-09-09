@@ -30,6 +30,9 @@
       flake = false;
     };
 
+		# Desktop Environments
+		niri.url = "github:sodiboo/niri-flake";
+
 		# Widget Frameworks
 		quickshell = {
 			url = "github:quickshell-mirror/quickshell";
