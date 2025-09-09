@@ -37,7 +37,10 @@ in
     };
 
     desktops = {
-      environments.hyprland.hypridle.enable = true;
+      environments = {
+        hyprland.hypridle.enable = true;
+        niri.enable = true;
+      };
     };
 
     terminals = {
