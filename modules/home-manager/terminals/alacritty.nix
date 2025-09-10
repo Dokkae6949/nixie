@@ -15,7 +15,14 @@ in
     programs.alacritty = {
       enable = true;
       
-      theme = "catppuccin_mocha";
+      # theme = "catppuccin_mocha";
+      settings = {
+        general.import = ["colors.toml"];
+
+        window = {
+          padding = { x = 8; y = 8; };
+        };
+      };
     };
   };
 }

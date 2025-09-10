@@ -18,7 +18,8 @@ in
       enable = true;
       defaultEditor = (config.custom.editors.defaultEditor == "helix");
 
-      settings.theme = "catppuccin_mocha";
+      settings.theme = "base16_transparent";
+      # settings.theme = "matugen";
 
       languages = {
         language-server = {

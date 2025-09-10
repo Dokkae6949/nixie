@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./helix.nix
+    ./jetbrains.nix
   ];
 
   options.custom.editors = {

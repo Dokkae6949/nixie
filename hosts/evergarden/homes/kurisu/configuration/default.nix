@@ -58,8 +58,8 @@ in
       defaultEditor = "helix";
     
       helix.enable = true;
+      jetbrains.enable = true;
     };
-
     communication = {
       vesktop.enable = true;
     };
