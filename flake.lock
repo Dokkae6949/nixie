@@ -359,11 +359,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752960378,
-        "narHash": "sha256-+OVLmsSFN8Q1DracUlzb++q8aUf//ZipslyRQUR9Il0=",
+        "lastModified": 1756981260,
+        "narHash": "sha256-GhuD9QVimjynHI0OOyZsqJsnlXr2orowh9H+HYz4YMs=",
         "owner": "quickshell-mirror",
         "repo": "quickshell",
-        "rev": "fcffbbced889717e09115e22fd181341746bf6e6",
+        "rev": "6eb12551baf924f8fdecdd04113863a754259c34",
         "type": "github"
       },
       "original": {

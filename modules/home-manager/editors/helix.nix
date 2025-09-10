@@ -46,7 +46,7 @@ in
 
           qml = {
             command = "qmlls";
-            args = [ "-E" ];
+            args = [ ];
           };
         };
 
