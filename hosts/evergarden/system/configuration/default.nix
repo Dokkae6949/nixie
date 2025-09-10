@@ -8,6 +8,7 @@ let
 in
 {
   imports = [
+    nm.database
     nm.desktops
     nm.shells
     nm.hardware
@@ -30,6 +31,10 @@ in
       };
 
       keyd.enable = true;
+    };
+
+    database = {
+      postgresql.enable = true;
     };
   
     desktops = {
