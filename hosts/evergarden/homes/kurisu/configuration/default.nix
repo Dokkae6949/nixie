@@ -62,6 +62,7 @@ in
     };
     communication = {
       vesktop.enable = true;
+      matrix.enable = true;
     };
 
     audio = {
