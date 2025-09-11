@@ -10,6 +10,7 @@ in
   imports = [
     ./helix.nix
     ./jetbrains.nix
+    ./obsidian.nix
   ];
 
   options.custom.editors = {

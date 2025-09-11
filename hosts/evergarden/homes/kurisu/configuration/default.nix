@@ -59,6 +59,7 @@ in
     
       helix.enable = true;
       jetbrains.enable = true;
+      obsidian.enable = true;
     };
     communication = {
       vesktop.enable = true;
