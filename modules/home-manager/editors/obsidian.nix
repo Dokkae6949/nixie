@@ -13,8 +13,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.obsidian = {
-      enable = true;
-    };
+    # TODO: Re-enable with next hm release.
+    # programs.obsidian = {
+    #   enable = true;
+    # };
+
+    home.packages = with pkgs; [
+      obsidian
+    ];
   };
 }
