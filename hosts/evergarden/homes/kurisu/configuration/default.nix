@@ -51,6 +51,7 @@ in
       bat.enable = true;
       eza.enable = true;
       git.enable = true;
+      fileBrowser.enable = true;
       systemDiagnostic.enable = true;
     };
 
