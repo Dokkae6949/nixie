@@ -11,6 +11,7 @@ in
     nm.database
     nm.desktops
     nm.shells
+    nm.services
     nm.hardware
   
     ./apps
@@ -55,6 +56,10 @@ in
         enable = true;
         defaultFor = [ "root" "kurisu" ];
       };
+    };
+
+    services = {
+      tailscale.enable = true;
     };
   };
 }
