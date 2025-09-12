@@ -12,7 +12,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    service.tailscale = {
+    services.tailscale = {
       enable = true;
     };
   };
