@@ -15,11 +15,11 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [])
+      (jetbrains.plugins.addPlugins jetbrains.datagrip [])
       # (jetbrains.plugins.addPlugins jetbrains.webstorm [])
       # (jetbrains.plugins.addPlugins jetbrains.rust-rover [])
       # (jetbrains.plugins.addPlugins jetbrains.rider [])
       # (jetbrains.plugins.addPlugins jetbrains.clion [])
-      # jetbrains.datagrip
     ];
   };
 }
