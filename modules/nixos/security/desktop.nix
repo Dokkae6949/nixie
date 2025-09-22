@@ -27,10 +27,11 @@ in
     systemd.user.services.pantheon-polkit-agent = {
       description = "Pantheon Polkit Authentication Agent";
       wantedBy = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" "dbus.service" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/pantheon-polkit-agent";
+        ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
