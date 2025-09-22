@@ -24,17 +24,20 @@ in
       gnome.gnome-keyring.enable = true;
     };
 
-    systemd.user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
+    systemd.user.services.pantheon-polkit-agent = {
+      description = "Pantheon Polkit Authentication Agent";
       wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" "dbus.service" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/pantheon-polkit-agent";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
+        # Environment = [
+        #   "DISPLAY=:0"
+        #   "WAYLAND_DISPLAY=${builtins.getEnv "WAYLAND_DISPLAY"}"
+        # ];
       };
     };
   };
