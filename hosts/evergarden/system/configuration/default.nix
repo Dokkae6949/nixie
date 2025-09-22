@@ -10,6 +10,7 @@ in
   imports = [
     nm.database
     nm.desktops
+    nm.security
     nm.shells
     nm.services
     nm.hardware
@@ -49,6 +50,10 @@ in
         hyprland.enable = true;
         niri.enable = true;
       };
+    };
+
+    security = {
+      desktop.enable = true;
     };
 
     shells = {
