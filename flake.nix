@@ -52,7 +52,7 @@
 		# Application runner
 		walker = {
 			url = "github:abenz1267/walker";
-			inputs.nixpkgs.follows = "nixpkgs";
+			# inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
