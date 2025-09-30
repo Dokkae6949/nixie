@@ -41,6 +41,8 @@ in
         hyprland.hypridle.enable = true;
         niri.enable = true;
       };
+
+      launchers.walker.enable = true;
     };
 
     terminals = {

@@ -45,9 +45,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 		matugen = {
-	    url = "github:/InioX/Matugen/main";
+	    url = "github:InioX/Matugen/main";
 			inputs.nixpkgs.follows = "nixpkgs";
 	  };
+
+		# Application runner
+		elephant = {
+			url = "github:abenz1267/elephant";
+			# inputs.nixpkgs.follows = "nixpkgs";
+		};
+		walker = {
+			url = "github:abenz1267/walker";
+			# inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { self, flake-parts, ... } @ inputs: let
