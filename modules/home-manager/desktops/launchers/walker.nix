@@ -11,7 +11,6 @@ in
 {
   imports = [
     inputs.walker.homeManagerModules.default
-    inputs.elephant.homeManagerModules.default
   ];
 
   options.custom.desktops.launchers.walker = {
@@ -24,10 +23,6 @@ in
     ];
   
     programs = {
-      elephant = {
-        enable = true;
-      };
-
       walker = {
         enable = true;
         runAsService = true;
