@@ -1,4 +1,6 @@
-{ ...
+{ pkgs
+, lib
+, ...
 }:
 
 {
@@ -106,6 +108,22 @@
               position = "4480,360";
               scale = 1.0;
             }
+          ];
+        };
+      }
+      { profile = {
+          name = "internal-hdmi-mirror";
+          outputs = [
+            { criteria = "California Institute of Technology 0x1609 Unknown";
+              mode = "2560x1600@165.02Hz";
+              position = "0,0";
+              scale = 1.0;
+              adaptiveSync = true;
+            }
+            { criteria = "HDMI-A-1"; }
+          ];
+          exec = [
+            "${lib.getExe' pkgs.wl-mirror "wl-mirror"} --fullscreen-output HDMI-A-1 eDP-1"
           ];
         };
       }
