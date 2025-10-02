@@ -19,9 +19,7 @@
         isNormalUser = true;
         hashedPasswordFile = config.sops.secrets."users/kurisu/password_hash".path;
 
-        extraGroups = [
-          "wheel"
-        ];
+        extraGroups = [ "wheel" "docker" ];
       };
     };
   };

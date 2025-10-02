@@ -17,6 +17,7 @@ in
     hmm.tools
     hmm.fonts
     hmm.theming
+    hmm.virtualisation
   
     ./browsers
     ./sops.nix
@@ -78,6 +79,10 @@ in
 
     theming = {
       matugen.enable = true;
+    };
+
+    virtualisation = {
+      docker.enable = true;
     };
   };
 }

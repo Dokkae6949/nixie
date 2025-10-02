@@ -14,6 +14,7 @@ in
     nm.shells
     nm.services
     nm.hardware
+    nm.virtualisation
   
     ./apps
     ./io
@@ -65,6 +66,10 @@ in
 
     services = {
       tailscale.enable = true;
+    };
+
+    virtualisation = {
+      docker.enable = true;
     };
   };
 }

@@ -8,4 +8,5 @@
   tools = import ./tools;
   fonts = import ./fonts;
   theming = import ./theming;
+  virtualisation = import ./virtualisation;
 }
