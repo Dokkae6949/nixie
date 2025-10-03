@@ -66,6 +66,7 @@ in
         just-lsp
         yaml-language-server
         unstable.tombi
+        docker-compose-language-service
 
         rust-analyzer
         clang-tools
