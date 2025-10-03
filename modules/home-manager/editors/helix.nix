@@ -48,6 +48,10 @@ in
             command = "qmlls";
             args = [ ];
           };
+
+          dockerfile = {
+            command = "docker-language-server";
+          };
         };
 
         language = [
