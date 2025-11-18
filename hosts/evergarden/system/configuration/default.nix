@@ -50,8 +50,8 @@ in
       };
 
       environments = {
-        cosmic.enable = true;
-        hyprland.enable = true;
+        # cosmic.enable = true;
+        # hyprland.enable = true;
         niri.enable = true;
       };
     };
