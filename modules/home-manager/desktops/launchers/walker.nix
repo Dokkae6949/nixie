@@ -25,7 +25,7 @@ in
     programs = {
       walker = {
         enable = true;
-        runAsService = true;
+        runAsService = false;
       };
     };
   };

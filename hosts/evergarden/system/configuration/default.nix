@@ -24,6 +24,9 @@ in
     ./sudo.nix
     ./users.nix
     ./sops.nix
+    ./qemu.nix
+    ./network.nix
+    ./battery.nix
   ];
 
   custom = {
