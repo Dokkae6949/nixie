@@ -25,6 +25,11 @@ in
       XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE";
     };
 
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    };
+
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;
