@@ -20,6 +20,7 @@ in
     hmm.virtualisation
   
     ./browsers
+    ./cursor.nix
     ./sops.nix
     ./qt.nix
     ./monitors.nix
