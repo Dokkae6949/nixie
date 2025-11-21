@@ -26,6 +26,7 @@ in
   # Add virt-manager and looking-glass to use later.
   environment.systemPackages = with pkgs; [
     looking-glass-client
+    virt-viewer
   ];
 
   users.users.${user}.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
