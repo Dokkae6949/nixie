@@ -29,7 +29,7 @@ in
     virt-viewer
   ];
 
-  users.users.${user}.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
+  users.users.${user}.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" "kvm" ];
 
   virtualisation = {
     libvirtd = {
