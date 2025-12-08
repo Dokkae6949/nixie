@@ -41,8 +41,14 @@
 
       trusted-users = ["root" "@wheel"];
 
-      substituters = ["https://walker.cachix.org"];
-      trusted-public-keys = ["walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="];
+      substituters = [
+        "https://walker.cachix.org"
+        "niri.cachix.org"
+      ];
+      trusted-public-keys = [
+        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      ];
     };
 
     # Opinionated: disable channels

@@ -31,7 +31,7 @@
     };
 
 		# Desktop Components
-		niri.url = "github:sodiboo/niri-flake";
+		niri.url = "github:sodiboo/niri-flake?rev=30374d29ee04aca07f0384c2c664dea9487c0feb";
 		nwww = {
 			url = "github:Dokkae6949/nwww";
 			inputs.nixpkgs.follows = "nixpkgs";

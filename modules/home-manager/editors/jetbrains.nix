@@ -14,7 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs.unstable; [
-      (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["github-copilot"])
+      (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [])
       (jetbrains.plugins.addPlugins jetbrains.datagrip [])
       (jetbrains.plugins.addPlugins jetbrains.phpstorm [])
       (jetbrains.plugins.addPlugins jetbrains.gateway [])
