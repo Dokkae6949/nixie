@@ -41,7 +41,7 @@ in
 
     desktops = {
       environments = {
-        hyprland.hypridle.enable = true;
+        # hyprland.hypridle.enable = true;
         niri.enable = true;
       };
 
