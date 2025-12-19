@@ -15,7 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     services.postgresql = {
       enable = true;
-
+     
       package = pkgs.postgresql_17;  
       enableTCPIP = true;
       authentication = pkgs.lib.mkOverride 10 ''
@@ -23,6 +23,8 @@ in
         local all       postgres                  trust
         host  all       all       127.0.0.1/32    trust
         host  all       all       ::1/128         trust
+        #Allow Docker bridge network (default Docker network)
+        host  all       all       172.17.0.0/16   trust
       '';
       initialScript = pkgs.writeText "backend-initScript" ''
         CREATE ROLE postgres WITH LOGIN PASSWORD 'postgres' CREATEDB;

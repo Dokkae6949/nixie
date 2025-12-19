@@ -12,14 +12,13 @@
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     inputs.nixos-hardware.nixosModules.common-gpu-amd
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
   boot = {
     initrd = {
-      kernelModules = [ "amdgpu" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+      kernelModules = [ "amdgpu" "nvidia" ];
       availableKernelModules = [
         "nvme"
         "xhci_pci"
@@ -32,8 +31,6 @@
     };
 
     kernelModules = [ "kvm-amd" "fuse" ];
-    extraModulePackages = [ ];
-    # Don’t let nouveau grab the GPU
     blacklistedKernelModules = [ "nouveau" ];
     supportedFilesystems = ["ntfs"];
 
@@ -42,15 +39,8 @@
       options snd-intel-dspcfg dsp_driver=3
     '';
 
-    # Keep firmware/simpledrm from owning the console, and prefer NVIDIA’s fb
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    #   "nvidia-drm.modeset=1"
-    #   "nvidia-drm.fbdev=1"
-    #   "video=efifb:off"
-    #   "video=simpledrm:off"
-    #   # Pick the NVIDIA fbdev (often fb1). Adjust later if needed.
-    #   "fbcon=map:1"
     ];
   };
 
@@ -64,14 +54,16 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     nvidia = {
-      modesetting.enable = lib.mkDefault true;
-      powerManagement.enable = lib.mkDefault true;
-      powerManagement.finegrained = lib.mkDefault false;
-      open = lib.mkForce true;
+      open = true;
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      powerManagement.finegrained = true;
 
       # Overwrite the amd gpu bus Id because this laptop changes the
       # ID to from 5 to 6 if 2 disks are installed.
       prime = {
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
         amdgpuBusId = lib.mkDefault "PCI:6:0:0";
         nvidiaBusId = lib.mkDefault "PCI:1:0:0";
       };
@@ -84,7 +76,7 @@
       enable32Bit = lib.mkDefault true;
 
       extraPackages = with pkgs; [
-        # vaapiVdpau
+        vaapiVdpau
         nvidia-vaapi-driver
         libvdpau-va-gl
         amdvlk

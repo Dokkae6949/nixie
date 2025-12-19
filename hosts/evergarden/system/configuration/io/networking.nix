@@ -14,6 +14,8 @@
       enable = true;
       allowedTCPPorts = [ ];
       allowedUDPPorts = [ ];
+
+      trustedInterfaces = [ "docker0" ];
     };
   };
 }
