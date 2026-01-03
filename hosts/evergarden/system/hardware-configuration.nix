@@ -64,6 +64,9 @@
     # Required for  firefox
     MOZ_DISABLE_RDD_SANDBOX = "1";
   };
+  environment.systemPackages = with pkgs; [
+    vdpauinfo
+  ];
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -72,13 +75,14 @@
       open = true;
       modesetting.enable = true;
       powerManagement.enable = true;
-      powerManagement.finegrained = true;
+      # powerManagement.finegrained = true;
 
       # Overwrite the amd gpu bus Id because this laptop changes the
       # ID to from 5 to 6 if 2 disks are installed.
       prime = {
-        offload.enable = true;
-        offload.enableOffloadCmd = true;
+        # offload.enable = true;
+        # offload.enableOffloadCmd = true;
+        sync.enable = true;
         amdgpuBusId = lib.mkDefault "PCI:6:0:0";
         nvidiaBusId = lib.mkDefault "PCI:1:0:0";
       };
@@ -94,7 +98,6 @@
         nvidia-vaapi-driver
         libvdpau-va-gl
 
-        vdpauinfo
         libva-utils
         libva
       ];
