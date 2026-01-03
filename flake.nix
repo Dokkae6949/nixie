@@ -45,8 +45,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 		matugen = {
-	    url = "github:InioX/Matugen/main";
-			inputs.nixpkgs.follows = "nixpkgs";
+	    url = "github:InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
 	  };
 
 		# Application runner
