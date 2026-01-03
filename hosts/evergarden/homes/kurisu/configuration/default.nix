@@ -24,6 +24,7 @@ in
     ./sops.nix
     ./qt.nix
     ./monitors.nix
+    ./swayidle.nix
   ];
 
   home.packages = with pkgs; [
