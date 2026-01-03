@@ -18,6 +18,7 @@ in
       brightnessctl
       nwww
       wl-mirror
+      xwayland-satellite
     ];
   };
 }
