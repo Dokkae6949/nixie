@@ -50,6 +50,21 @@
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  environment.variables = {
+    # Vaapi stuff
+    NVD_BACKEND = "direct";
+    LIBVA_DRIVER_NAME = "nvidia";
+
+    # Something?
+    GBM_BACKEND = "nvidia-drm";
+
+    # Prevent nouveu
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+
+    # Required for  firefox
+    MOZ_DISABLE_RDD_SANDBOX = "1";
+  };
+
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
@@ -78,6 +93,10 @@
       extraPackages = with pkgs; [
         nvidia-vaapi-driver
         libvdpau-va-gl
+
+        vdpauinfo
+        libva-utils
+        libva
       ];
     };
   };

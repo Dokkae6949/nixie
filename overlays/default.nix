@@ -11,6 +11,7 @@
     quickshell = inputs.quickshell.packages.${final.stdenv.hostPlatform.system}.default;
     astal = inputs.astal.packages.${final.stdenv.hostPlatform.system}.default;
     nwww = inputs.nwww.packages.${final.stdenv.hostPlatform.system}.default;
+    matugen = inputs.matugen.packages.${final.stdenv.hostPlatform.system}.default;
   };
   
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

@@ -11,6 +11,9 @@
     settings = [
       { profile = {
           name = "internal-only";
+          exec = [
+            "${lib.getExe' pkgs.matugen "matugen"} image $(cat ~/.wallpaper)"
+          ];
           outputs = [
             { criteria = "California Institute of Technology 0x1609 Unknown";
               mode = "2560x1600@165.02Hz";
@@ -23,6 +26,9 @@
       }
       { profile = {
           name = "external-only-single";
+          exec = [
+            "${lib.getExe' pkgs.matugen "matugen"} image $(cat ~/.wallpaper)"
+          ];
           outputs = [
             # Laptop internal monitor.
             { criteria = "California Institute of Technology 0x1609 Unknown";
@@ -41,6 +47,9 @@
       }
       { profile = {
           name = "external-single";
+          exec = [
+            "${lib.getExe' pkgs.matugen "matugen"} image $(cat ~/.wallpaper)"
+          ];
           outputs = [
             # Center monitor.
             { criteria = "Dell Inc. DELL G2724D C9S16Y3";
@@ -54,6 +63,9 @@
       }
       { profile = {
           name = "external-all";
+          exec = [
+            "${lib.getExe' pkgs.matugen "matugen"} image $(cat ~/.wallpaper)"
+          ];
           outputs = [
             # Center monitor.
             { criteria = "Dell Inc. DELL G2724D C9S16Y3";
@@ -81,6 +93,9 @@
       }
       { profile = {
           name = "external-only-all";
+          exec = [
+            "${lib.getExe' pkgs.matugen "matugen"} image $(cat ~/.wallpaper)"
+          ];
           outputs = [
             # Laptop internal monitor.
             { criteria = "California Institute of Technology 0x1609 Unknown";
@@ -113,6 +128,10 @@
       }
       { profile = {
           name = "internal-hdmi-mirror";
+          exec = [
+            "${lib.getExe' pkgs.matugen "matugen"} image $(cat ~/.wallpaper)"
+            "${lib.getExe' pkgs.wl-mirror "wl-mirror"} --fullscreen-output HDMI-A-1 eDP-1"
+          ];
           outputs = [
             { criteria = "California Institute of Technology 0x1609 Unknown";
               mode = "2560x1600@165.02Hz";
@@ -121,9 +140,6 @@
               adaptiveSync = true;
             }
             { criteria = "HDMI-A-1"; }
-          ];
-          exec = [
-            "${lib.getExe' pkgs.wl-mirror "wl-mirror"} --fullscreen-output HDMI-A-1 eDP-1"
           ];
         };
       }

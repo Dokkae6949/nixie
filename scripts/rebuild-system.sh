@@ -6,4 +6,4 @@ else
   export HOST=$(hostname)
 fi
 
-nixos-rebuild switch --flake .#$HOST --use-remote-sudo
+nixos-rebuild switch --flake .#$HOST --sudo
