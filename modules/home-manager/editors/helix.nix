@@ -18,8 +18,13 @@ in
       enable = true;
       defaultEditor = (config.custom.editors.defaultEditor == "helix");
 
-      settings.theme = "base16_transparent";
-      # settings.theme = "matugen";
+      settings = {
+        theme = "term16_dark";
+
+        editor = {
+          line-number = "relative";
+        };
+      };
 
       languages = {
         language-server = {
