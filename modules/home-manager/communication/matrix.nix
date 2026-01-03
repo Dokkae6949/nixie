@@ -16,7 +16,7 @@ in
     home.packages = with pkgs; [
       # Has security issues
       # fluffychat
-      cinny-desktop
+      # cinny-desktop
     ];
   };
 }

@@ -30,7 +30,7 @@
       ];
     };
 
-    kernelModules = [ "kvm-amd" "fuse" ];
+    kernelModules = [ "kvm-amd" "fuse" "nvidia-uvm" ];
     blacklistedKernelModules = [ "nouveau" ];
     supportedFilesystems = ["ntfs"];
 
@@ -76,13 +76,8 @@
       enable32Bit = lib.mkDefault true;
 
       extraPackages = with pkgs; [
-        vaapiVdpau
         nvidia-vaapi-driver
         libvdpau-va-gl
-        amdvlk
-      ];
-      extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
       ];
     };
   };

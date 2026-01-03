@@ -15,8 +15,13 @@ in
     programs.git = {
       enable = true;
 
-      userName = "Dokkae6949";
-      userEmail = "finnliry@gmail.com";
+      settings.user = {
+        name = "Dokkae6949";
+        email = "finnliry@gmail.com";
+
+        init.defaultBranch = "main";
+        safe.directory = "/etc/nixos";
+      };
 
       ignores = [
         ".idea/"
@@ -26,11 +31,6 @@ in
         ".envrc"
         ".ignore"
       ];
-
-      extraConfig = {
-        init.defaultBranch = "main";
-        safe.directory = "/etc/nixos";
-      };
     };
   };
 }

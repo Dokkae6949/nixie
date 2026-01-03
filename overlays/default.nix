@@ -8,16 +8,16 @@
 
   # Contains any other overlays and modifications to packages.
   modifications = final: prev: {
-    quickshell = inputs.quickshell.packages.${final.system}.default;
-    astal = inputs.astal.packages.${final.system}.default;
-    nwww = inputs.nwww.packages.${final.system}.default;
+    quickshell = inputs.quickshell.packages.${final.stdenv.hostPlatform.system}.default;
+    astal = inputs.astal.packages.${final.stdenv.hostPlatform.system}.default;
+    nwww = inputs.nwww.packages.${final.stdenv.hostPlatform.system}.default;
   };
   
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'.
   unstable-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
-      system = final.system;
+      system = final.stdenv.hostPlatform.system;
       config = final.config;
     };
   };
