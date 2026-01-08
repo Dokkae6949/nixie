@@ -11,7 +11,7 @@ in
 
     # Timouts configured in seconds
     timeouts = [
-      { timeout = 60 * 2;
+      { timeout = 60 * 5;
         command = display "off";
       }
       { timeout = 60 * 10;
