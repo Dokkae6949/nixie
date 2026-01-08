@@ -18,6 +18,7 @@ in
       (jetbrains.plugins.addPlugins jetbrains.datagrip [])
       (jetbrains.plugins.addPlugins jetbrains.phpstorm [])
       (jetbrains.plugins.addPlugins jetbrains.gateway [])
+      (jetbrains.plugins.addPlugins jetbrains.pycharm [])
       # (jetbrains.plugins.addPlugins jetbrains.webstorm [])
       # (jetbrains.plugins.addPlugins jetbrains.rust-rover [])
       # (jetbrains.plugins.addPlugins jetbrains.rider [])
