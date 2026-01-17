@@ -24,6 +24,7 @@ in
     ./sudo.nix
     ./users.nix
     ./sops.nix
+    ./steam.nix
     ./qemu.nix
     ./network.nix
     ./battery.nix
