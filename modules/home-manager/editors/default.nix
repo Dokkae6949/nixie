@@ -11,6 +11,7 @@ in
     ./helix.nix
     ./jetbrains.nix
     ./obsidian.nix
+    ./zed.nix
   ];
 
   options.custom.editors = {
