@@ -23,6 +23,7 @@ in
 
         editor = {
           line-number = "relative";
+          text-width = 100;
         };
       };
 
@@ -64,6 +65,10 @@ in
             name = "css";
             auto-format = false;
           }
+          {
+            name = "typst";
+            indent = { tab-width = 2; unit = "  "; };
+          }
         ];
       };
 
@@ -77,6 +82,7 @@ in
         unstable.tombi
         docker-compose-language-service
         docker-language-server
+        tinymist
 
         rust-analyzer
         clang-tools
