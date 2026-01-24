@@ -31,7 +31,8 @@
     };
 
 		# Desktop Components
-		niri.url = "github:sodiboo/niri-flake?rev=30374d29ee04aca07f0384c2c664dea9487c0feb";
+		# niri.url = "github:sodiboo/niri-flake?rev=30374d29ee04aca07f0384c2c664dea9487c0feb";
+		niri.url = "github:sodiboo/niri-flake";
 		nwww = {
 			url = "github:Dokkae6949/nwww";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +55,7 @@
 			url = "github:abenz1267/walker";
 			# inputs.nixpkgs.follows = "nixpkgs";
 		};
+		nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
 	};
 
 	outputs = { self, flake-parts, ... } @ inputs: let
