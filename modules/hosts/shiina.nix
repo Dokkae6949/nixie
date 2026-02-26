@@ -3,16 +3,24 @@ let
   inherit (config.flake.modules) nixos homeManager;
 in
 {
+  # Register shiina-specific aspects.
+  flake.modules.nixos.shiina = {
+    imports = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480 ];
+  };
+
+  flake.modules.nixos.shiina-hardware = {
+    imports = [ ./_shiina/hardware-configuration.nix ];
+  };
+
+  # Host composition.
   configurations.nixos.shiina.module = { lib, config, ... }: {
     imports = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
-
       nixos.overlays
       nixos.sops
       nixos.impermanence
       nixos.niri
-
-      ../../hosts/shiina/hardware-configuration.nix
+      nixos.shiina
+      nixos.shiina-hardware
     ];
 
     sops = {
@@ -21,17 +29,12 @@ in
       defaultSopsFormat = "yaml";
     };
 
-    environment.persistence."/persist" = {
-      enable = true;
-      hideMounts = true;
+    # shiina-specific persistence (/etc/machine-id comes from nixos.impermanence,
+    # sops dirs come from nixos.sops, NetworkManager here).
+    environment.persistence."${config.custom.impermanence.persistPath}" = {
       directories = [
-        "/root/.config/sops"
-        "/root/.ssh"
         "/etc/nixos"
         "/etc/NetworkManager/system-connections"
-      ];
-      files = [
-        "/etc/machine-id"
       ];
     };
 
@@ -51,9 +54,7 @@ in
     users = {
       mutableUsers = false;
       users = {
-        root = {
-          hashedPasswordFile = config.sops.secrets."users/root/password_hash".path;
-        };
+        root.hashedPasswordFile = config.sops.secrets."users/root/password_hash".path;
         kurisu = {
           isNormalUser = true;
           hashedPasswordFile = config.sops.secrets."users/kurisu/password_hash".path;
@@ -72,16 +73,12 @@ in
         experimental-features = "nix-command flakes";
         flake-registry = "";
         trusted-users = [ "root" "@wheel" ];
-        substituters = [
-          "https://niri.cachix.org"
-        ];
+        substituters = [ "https://niri.cachix.org" ];
         trusted-public-keys = [
           "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
         ];
       };
-
       channel.enable = false;
-
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
@@ -90,6 +87,7 @@ in
     nixpkgs.hostPlatform = "x86_64-linux";
   };
 
+  # Minimal kurisu home on shiina: core tools only.
   configurations.homeManager."kurisu@shiina" = {
     system = "x86_64-linux";
     module = {

@@ -3,17 +3,23 @@ let
   inherit (config.flake.modules) nixos homeManager;
 in
 {
+  # Register evergarden-specific aspects (excluded from auto-import via _ prefix).
+  flake.modules.nixos.evergarden = import ./_evergarden;
+
+  # Host composition: list the aspects that make up this machine.
   configurations.nixos.evergarden.module = { lib, ... }: {
     imports = [
-      inputs.disko.nixosModules.disko
-
       nixos.overlays
       nixos.sops
       nixos.impermanence
-
-      ../../hosts/evergarden/system/disk-configuration.nix
-      ../../hosts/evergarden/system/hardware-configuration.nix
-      ../../hosts/evergarden/system/configuration
+      nixos.database
+      nixos.desktops
+      nixos.security
+      nixos.shells
+      nixos.services
+      nixos.hardware
+      nixos.virtualisation
+      nixos.evergarden
     ];
 
     nix = let
@@ -41,27 +47,20 @@ in
 
     system.stateVersion = "25.05";
     nixpkgs.hostPlatform = "x86_64-linux";
-    networking.hostName = "evergarden";
   };
 
+  # User configuration: full kurisu environment + evergarden-specific additions.
   configurations.homeManager."kurisu@evergarden" = {
     system = "x86_64-linux";
-    module = { pkgs, ... }: {
+    module = {
       imports = [
-        homeManager.overlays
-        homeManager.sops
-        ../../hosts/evergarden/homes/kurisu/configuration
+        homeManager.kurisu
+        homeManager.kurisu-evergarden
       ];
 
       home = {
         username = "kurisu";
         homeDirectory = "/home/kurisu";
-
-        packages = with pkgs; [
-          quickshell
-          inotify-tools
-        ];
-
         stateVersion = "25.05";
       };
 
