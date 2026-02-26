@@ -1,20 +1,16 @@
 { lib
-, outputs
 , ...
 }:
 
-let
-  nm = outputs.nixosModules;
-in
 {
   imports = [
-    nm.database
-    nm.desktops
-    nm.security
-    nm.shells
-    nm.services
-    nm.hardware
-    nm.virtualisation
+    ../../../../modules/_nixos/database
+    ../../../../modules/_nixos/desktops
+    ../../../../modules/_nixos/security
+    ../../../../modules/_nixos/shells
+    ../../../../modules/_nixos/services
+    ../../../../modules/_nixos/hardware
+    ../../../../modules/_nixos/virtualisation
   
     ./apps
     ./io

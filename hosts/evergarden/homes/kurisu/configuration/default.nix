@@ -1,23 +1,19 @@
-{ outputs
-, pkgs
+{ pkgs
 , ...
 }:
 
-let
-  hmm = outputs.homeManagerModules;
-in
 {
   imports = [
-    hmm.audio
-    hmm.communication
-    hmm.desktops
-    hmm.editors
-    hmm.shells
-    hmm.terminals
-    hmm.tools
-    hmm.fonts
-    hmm.theming
-    hmm.virtualisation
+    ../../../../../modules/_home-manager/audio
+    ../../../../../modules/_home-manager/communication
+    ../../../../../modules/_home-manager/desktops
+    ../../../../../modules/_home-manager/editors
+    ../../../../../modules/_home-manager/shells
+    ../../../../../modules/_home-manager/terminals
+    ../../../../../modules/_home-manager/tools
+    ../../../../../modules/_home-manager/fonts
+    ../../../../../modules/_home-manager/theming
+    ../../../../../modules/_home-manager/virtualisation
   
     ./browsers
     ./cursor.nix

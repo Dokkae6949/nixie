@@ -6,7 +6,7 @@
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
-    defaultSopsFile = ../../../secrets/default.yaml;
+    defaultSopsFile = ../../../../../secrets/evergarden.yaml;
     defaultSopsFormat = "yaml";
   };
 }

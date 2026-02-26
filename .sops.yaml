@@ -1,0 +1,22 @@
+keys:
+  # evergarden keys
+  - &evergarden_root age1hfsr0yvs6nwr2ecffcrp2pdvztx8lgfnmd7t8whr53u3lczzcfaq0rrs6z
+  - &evergarden_kurisu age154ausyv0u0lscdxlurm29wnktw0w694z6q87xnd5l5laj2xrp98qrkxc74
+
+  # shiina keys (fill in after running: age-keygen)
+  # - &shiina_root age1...
+  # - &shiina_kurisu age1...
+
+creation_rules:
+  - path_regex: secrets/evergarden\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *evergarden_root
+      - *evergarden_kurisu
+
+  - path_regex: secrets/shiina\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      # - *shiina_root
+      # - *shiina_kurisu
+      - *evergarden_kurisu
