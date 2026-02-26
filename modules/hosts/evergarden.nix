@@ -6,19 +6,20 @@ in
   # Register evergarden-specific aspects (excluded from auto-import via _ prefix).
   flake.modules.nixos.evergarden = import ./_evergarden;
 
-  # Host composition: list the aspects that make up this machine.
+  # Host composition: each line is an opt-in aspect.
   configurations.nixos.evergarden.module = { lib, ... }: {
     imports = [
       nixos.overlays
+      nixos.fish
+      nixos.keyd
       nixos.sops
       nixos.impermanence
-      nixos.database
-      nixos.desktops
-      nixos.security
-      nixos.shells
-      nixos.services
-      nixos.hardware
-      nixos.virtualisation
+      nixos.niri
+      nixos.ly
+      nixos.desktop
+      nixos.tailscale
+      nixos.docker
+      nixos.postgresql
       nixos.evergarden
     ];
 
@@ -44,6 +45,12 @@ in
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
+
+    services.xserver.xkb = {
+      layout = "at";
+      options = "terminate:ctrl_alt_bksp";
+    };
+    console.useXkbConfig = true;
 
     system.stateVersion = "25.05";
     nixpkgs.hostPlatform = "x86_64-linux";

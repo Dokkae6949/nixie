@@ -1,9 +1,0 @@
-{ ...
-}:
-
-{
-  imports = [
-    ./environments
-    ./launchers
-  ];
-}

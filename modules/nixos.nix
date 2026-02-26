@@ -9,20 +9,15 @@
     default = {};
   };
 
-  config.flake = {
-    nixosConfigurations = lib.mapAttrs
-      (name: { module }: inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; outputs = config.flake; };
-        modules = [
-          # Always include base options so custom.impermanence.* is available
-          # to all feature modules regardless of which host we're building.
-          config.flake.modules.nixos._base
-          module
-        ];
-      })
-      config.configurations.nixos;
-
-    # Expose reusable modules as flake outputs for backward compatibility.
-    nixosModules = import ./_nixos;
-  };
+  config.flake.nixosConfigurations = lib.mapAttrs
+    (name: { module }: inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; outputs = config.flake; };
+      modules = [
+        # Always include base options so custom.impermanence.* is available
+        # to all feature modules regardless of which host we're building.
+        config.flake.modules.nixos._base
+        module
+      ];
+    })
+    config.configurations.nixos;
 }

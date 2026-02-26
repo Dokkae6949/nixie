@@ -4,23 +4,29 @@ let
 in
 {
   # Full kurisu user configuration.
-  # Include homeManager.kurisu in a host to get the complete kurisu environment.
+  # Include homeManager.kurisu in a host to add the complete kurisu environment.
   flake.modules.homeManager.kurisu = { pkgs, ... }: {
     imports = [
       homeManager.overlays
       homeManager.sops
       homeManager.git
       homeManager.helix
-      homeManager.audio
-      homeManager.communication
-      homeManager.desktops
-      homeManager.editors
-      homeManager.shells
-      homeManager.terminals
-      homeManager.tools
+      homeManager.fish
+      homeManager.direnv
+      homeManager.niri
+      homeManager.walker
+      homeManager.alacritty
+      homeManager.bat
+      homeManager.eza
+      homeManager.files
+      homeManager.sysdiag
+      homeManager.obsidian
+      homeManager.jetbrains
+      homeManager.vesktop
+      homeManager.spotify
       homeManager.fonts
       homeManager.theming
-      homeManager.virtualisation
+      homeManager.docker
     ];
 
     home.packages = with pkgs; [
@@ -29,47 +35,6 @@ in
       quickshell
       inotify-tools
     ];
-
-    custom = {
-      shells = {
-        direnv.enable = true;
-        fish.enable = true;
-      };
-
-      desktops = {
-        environments.niri.enable = true;
-        launchers.walker.enable = true;
-      };
-
-      terminals.alacritty.enable = true;
-
-      tools = {
-        bat.enable = true;
-        eza.enable = true;
-        git.enable = true;
-        fileBrowser.enable = true;
-        systemDiagnostic.enable = true;
-      };
-
-      editors = {
-        defaultEditor = "helix";
-        helix.enable = true;
-        jetbrains.enable = true;
-        obsidian.enable = true;
-      };
-
-      communication = {
-        vesktop.enable = true;
-        matrix.enable = true;
-      };
-
-      audio.spotify.enable = true;
-      fonts.enable = true;
-
-      theming.matugen.enable = true;
-
-      virtualisation.docker.enable = true;
-    };
   };
 
   # Evergarden-specific additions for kurisu:

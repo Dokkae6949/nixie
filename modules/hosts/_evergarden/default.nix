@@ -7,9 +7,7 @@
     ./battery.nix
     ./boot.nix
     ./impermanence.nix
-    ./keyd.nix
     ./network.nix
-    ./options.nix
     ./qemu.nix
     ./sops.nix
     ./steam.nix

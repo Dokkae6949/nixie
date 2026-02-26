@@ -1,9 +1,0 @@
-{ ...
-}:
-
-{
-  imports = [
-    ./hyprland
-    ./niri.nix
-  ];
-}

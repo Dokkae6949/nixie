@@ -1,8 +1,0 @@
-{ ...
-}:
-
-{
-  imports = [
-    ./spotify.nix
-  ];
-}
