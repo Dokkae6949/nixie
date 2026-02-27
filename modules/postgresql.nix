@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.postgresql = { pkgs, ... }: {
+  den.aspects.postgresql.nixos = { pkgs, ... }: {
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql_17;

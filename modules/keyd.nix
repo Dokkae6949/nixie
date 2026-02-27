@@ -2,7 +2,7 @@
 {
   # NixOS: keyd daemon for system-wide key remapping.
   # Default layout: capslock → ctrl (hold) / escape (tap), esc → capslock.
-  flake.modules.nixos.keyd = { ... }: {
+  den.aspects.keyd.nixos = { ... }: {
     services.keyd = {
       enable = true;
 

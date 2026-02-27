@@ -17,12 +17,12 @@ in
 {
   flake.overlays = { inherit additions modifications unstable-packages; };
 
-  flake.modules.nixos.overlays = {
+  den.aspects.overlays.nixos = {
     nixpkgs.overlays = [ additions modifications unstable-packages ];
     nixpkgs.config.allowUnfree = true;
   };
 
-  flake.modules.homeManager.overlays = {
+  den.aspects.overlays.homeManager = {
     nixpkgs.overlays = [ additions modifications unstable-packages ];
     nixpkgs.config.allowUnfree = true;
   };

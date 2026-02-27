@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   # home-manager: matugen for material-you theme generation.
-  flake.modules.homeManager.theming = { lib, pkgs, ... }: {
+  den.aspects.theming.homeManager = { lib, pkgs, ... }: {
     home.packages = [
       inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

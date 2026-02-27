@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.helix = { pkgs, ... }: {
+  den.aspects.helix.homeManager = { pkgs, ... }: {
     programs.helix = {
       enable = true;
       defaultEditor = true;

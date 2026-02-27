@@ -1,13 +1,13 @@
 { ... }:
 {
   # NixOS: enable fish system-wide so users can be assigned fish as their shell.
-  flake.modules.nixos.fish = { pkgs, ... }: {
+  den.aspects.fish.nixos = { pkgs, ... }: {
     programs.fish.enable = true;
     environment.shells = [ pkgs.fish ];
   };
 
   # home-manager: full fish configuration with starship prompt.
-  flake.modules.homeManager.fish = { pkgs, ... }: {
+  den.aspects.fish.homeManager = { pkgs, ... }: {
     programs = {
       fish = {
         enable = true;

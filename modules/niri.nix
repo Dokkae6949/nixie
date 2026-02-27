@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.niri = { pkgs, ... }: {
+  den.aspects.niri.nixos = { pkgs, ... }: {
     imports = [ inputs.niri.nixosModules.niri ];
 
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
@@ -17,7 +17,7 @@
   };
 
   # home-manager: tools and utilities for the niri session.
-  flake.modules.homeManager.niri = { pkgs, ... }: {
+  den.aspects.niri.homeManager = { pkgs, ... }: {
     home.packages = with pkgs; [
       brightnessctl
       playerctl

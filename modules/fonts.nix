@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.fonts = { pkgs, ... }: {
+  den.aspects.fonts.homeManager = { pkgs, ... }: {
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [

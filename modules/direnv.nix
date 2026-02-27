@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.direnv = { config, ... }: {
+  den.aspects.direnv.homeManager = { config, ... }: {
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

@@ -1,22 +1,20 @@
-{ lib, inputs, ... }:
+{ inputs, ... }:
 {
   # NixOS: sops-nix for system secrets.
-  # Persists the age key and SSH directory when impermanence is active.
-  flake.modules.nixos.sops = { lib, config, ... }: {
+  # Persistence dirs are gated on impermanence being present (options check).
+  den.aspects.sops.nixos = { options, lib, ... }: {
     imports = [ inputs.sops-nix.nixosModules.sops ];
 
-    config = lib.mkIf config.custom.impermanence.enable {
-      environment.persistence."${config.custom.impermanence.persistPath}" = {
-        directories = [
-          "/root/.config/sops"
-          "/root/.ssh"
-        ];
-      };
+    config = lib.mkIf (options.environment ? persistence) {
+      environment.persistence."/persist".directories = [
+        "/root/.config/sops"
+        "/root/.ssh"
+      ];
     };
   };
 
   # home-manager: sops-nix for user secrets.
-  flake.modules.homeManager.sops = {
+  den.aspects.sops.homeManager = { ... }: {
     imports = [ inputs.sops-nix.homeManagerModules.sops ];
   };
 }

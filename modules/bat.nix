@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.bat = { pkgs, ... }: {
+  den.aspects.bat.homeManager = { pkgs, ... }: {
     programs.bat = {
       enable = true;
 

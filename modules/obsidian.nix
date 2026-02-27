@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.obsidian = { pkgs, ... }: {
+  den.aspects.obsidian.homeManager = { pkgs, ... }: {
     home.packages = with pkgs; [ obsidian ];
   };
 }

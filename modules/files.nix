@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.files = { pkgs, ... }: {
+  den.aspects.files.homeManager = { pkgs, ... }: {
     home.packages = with pkgs; [ nautilus ];
 
     xdg.portal = {

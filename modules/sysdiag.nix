@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.sysdiag = { pkgs, ... }: {
+  den.aspects.sysdiag.homeManager = { pkgs, ... }: {
     home.packages = with pkgs; [
       btop
       nvtopPackages.full

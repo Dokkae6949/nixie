@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.eza = { ... }: {
+  den.aspects.eza.homeManager = { ... }: {
     programs.eza.enable = true;
   };
 }

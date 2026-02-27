@@ -12,6 +12,7 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
+    den.url = "github:vic/den";
 
     # Hardware and storage configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

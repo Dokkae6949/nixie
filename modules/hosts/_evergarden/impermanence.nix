@@ -1,14 +1,12 @@
-{ lib, config, ... }:
+{ options, lib, ... }:
 {
   # Evergarden-specific persistence directories.
-  # Activated only when the nixos.impermanence aspect is included.
-  config = lib.mkIf config.custom.impermanence.enable {
-    environment.persistence."${config.custom.impermanence.persistPath}" = {
-      directories = [
-        "/etc/nixos"
-        "/run/media"
-        "/etc/NetworkManager/system-connections"
-      ];
-    };
+  # Gated on the impermanence nixos module being present.
+  config = lib.mkIf (options.environment ? persistence) {
+    environment.persistence."/persist".directories = [
+      "/etc/nixos"
+      "/run/media"
+      "/etc/NetworkManager/system-connections"
+    ];
   };
 }

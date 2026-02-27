@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.jetbrains = { pkgs, ... }: {
+  den.aspects.jetbrains.homeManager = { pkgs, ... }: {
     home.packages = let
       plugins = with inputs.nix-jetbrains-plugins.plugins."${pkgs.stdenv.hostPlatform.system}"; [
         idea."2025.2"."com.github.copilot"

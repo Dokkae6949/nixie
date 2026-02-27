@@ -2,7 +2,7 @@
 {
   # NixOS: Ly console display manager / greeter.
   # Includes the workaround needed when running with niri.
-  flake.modules.nixos.ly = { ... }: {
+  den.aspects.ly.nixos = { ... }: {
     services.displayManager.ly = {
       enable = true;
 

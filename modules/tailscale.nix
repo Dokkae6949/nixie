@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.tailscale = { ... }: {
+  den.aspects.tailscale.nixos = { ... }: {
     services.tailscale.enable = true;
   };
 }

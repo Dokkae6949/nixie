@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.walker = { pkgs, ... }: {
+  den.aspects.walker.homeManager = { pkgs, ... }: {
     imports = [ inputs.walker.homeManagerModules.default ];
 
     home.packages = with pkgs; [ unstable.app2unit ];

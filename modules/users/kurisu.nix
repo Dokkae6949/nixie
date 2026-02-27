@@ -1,43 +1,33 @@
-{ config, ... }:
-let
-  inherit (config.flake.modules) homeManager;
-in
+{ den, ... }:
 {
-  # Full kurisu user configuration.
-  # Include homeManager.kurisu in a host to add the complete kurisu environment.
-  flake.modules.homeManager.kurisu = { pkgs, ... }: {
-    imports = [
-      homeManager.overlays
-      homeManager.sops
-      homeManager.git
-      homeManager.helix
-      homeManager.fish
-      homeManager.direnv
-      homeManager.niri
-      homeManager.walker
-      homeManager.alacritty
-      homeManager.bat
-      homeManager.eza
-      homeManager.files
-      homeManager.sysdiag
-      homeManager.obsidian
-      homeManager.jetbrains
-      homeManager.vesktop
-      homeManager.spotify
-      homeManager.fonts
-      homeManager.theming
-      homeManager.docker
-    ];
+  # Full kurisu user aspect — applied to kurisu on evergarden via den's context pipeline.
+  # Includes all HM feature aspects + evergarden-specific user config.
+  den.aspects.kurisu = {
+    homeManager = { ... }: {
+      imports = [ (import ./_kurisu) ];
+    };
 
-    home.packages = with pkgs; [
-      zellij
-      jq
-      quickshell
-      inotify-tools
+    includes = [
+      den.aspects.overlays
+      den.aspects.sops
+      den.aspects.git
+      den.aspects.helix
+      den.aspects.fish
+      den.aspects.direnv
+      den.aspects.niri
+      den.aspects.walker
+      den.aspects.alacritty
+      den.aspects.bat
+      den.aspects.eza
+      den.aspects.files
+      den.aspects.sysdiag
+      den.aspects.obsidian
+      den.aspects.jetbrains
+      den.aspects.vesktop
+      den.aspects.spotify
+      den.aspects.fonts
+      den.aspects.theming
+      den.aspects.docker
     ];
   };
-
-  # Evergarden-specific additions for kurisu:
-  # browsers, cursor theme, monitor layout, swayidle, and sops config.
-  flake.modules.homeManager.kurisu-evergarden = import ./_kurisu;
 }

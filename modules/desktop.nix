@@ -1,7 +1,7 @@
 { ... }:
 {
   # NixOS: polkit, gnome-keyring, PAM integration for graphical sessions.
-  flake.modules.nixos.desktop = { pkgs, ... }: {
+  den.aspects.desktop.nixos = { pkgs, ... }: {
     security = {
       polkit.enable = true;
 
