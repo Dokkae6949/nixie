@@ -1,0 +1,23 @@
+{ ... }:
+{
+  den.aspects.postgresql.nixos = { pkgs, ... }: {
+    services.postgresql = {
+      enable = true;
+      package = pkgs.postgresql_17;
+      enableTCPIP = true;
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser    origin-address  auth-method
+        local all       postgres                  trust
+        host  all       all       127.0.0.1/32    trust
+        host  all       all       ::1/128         trust
+        #Allow Docker bridge network
+        host  all       all       172.17.0.0/16   trust
+      '';
+      initialScript = pkgs.writeText "postgresql-init" ''
+        CREATE ROLE postgres WITH LOGIN PASSWORD 'postgres' CREATEDB;
+        CREATE DATABASE postgres;
+        GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
+      '';
+    };
+  };
+}
