@@ -1,14 +1,15 @@
 { inputs, ... }:
 {
-  # NixOS: opt-in impermanence via nix-community/impermanence.
-  # Features declare their own persistence needs via the gated pattern below.
-  # Opt in by including den.aspects.impermanence in a host.
-  den.aspects.impermanence.nixos = { ... }: {
+  # Opt-in impermanence. When included, reads nixie.persist.{directories,files}
+  # accumulated by feature aspects — no per-feature mkIf guards needed.
+  den.aspects.impermanence.nixos = { config, ... }: {
     imports = [ inputs.impermanence.nixosModules.impermanence ];
 
     environment.persistence."/persist" = {
       hideMounts = true;
-      files = [ "/etc/machine-id" ];
+      files       = [ "/etc/machine-id" ] ++ config.nixie.persist.files;
+      directories = config.nixie.persist.directories;
     };
   };
 }
+
